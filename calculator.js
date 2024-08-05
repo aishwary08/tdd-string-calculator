@@ -11,6 +11,12 @@ class Calculator {
         }
 
         const parts = numberString.split(delimiter);
+        const negatives = parts.filter(num => parseInt(num) < 0);
+
+        if (negatives.length > 0) {
+            throw new Error(`negative numbers not allowed: ${negatives.join(',')}`);
+        }
+
         let sum = 0;
 
         parts.forEach(part => {
