@@ -6,7 +6,7 @@ class Calculator {
 
         if (numbers.startsWith('//')) {
             const delimiterEndIndex = numbers.indexOf('\n');
-            delimiter = new RegExp(numbers.charAt(2));
+            delimiter = new RegExp(numbers.substring(2, delimiterEndIndex));
             numberString = numbers.substring(delimiterEndIndex + 1);
         }
 
