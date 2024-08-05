@@ -9,5 +9,6 @@ describe('String Calculator', () => {
 
     it('handles basic cases', () => {
         expect(calculator.add("")).toBe(0);
+        expect(calculator.add("1")).toBe(1);
     });
 })
