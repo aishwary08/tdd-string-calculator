@@ -39,4 +39,9 @@ describe('String Calculator', () => {
         expect(calculator.add('2,1201,5')).toBe(7);
         expect(calculator.add('2,1,2,1031')).toBe(5);
     });
+
+    it('supports delimiters of any length', () => {
+        expect(calculator.add('//[***]\n1***2***3')).toBe(6);
+        expect(calculator.add('//bar\n1bar5bar3')).toBe(9);
+    });
 })
