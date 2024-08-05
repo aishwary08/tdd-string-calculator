@@ -1,7 +1,7 @@
 class Calculator {
 
     add = (numbers) => {
-        const parts = numbers.split(',')
+        const parts = numbers.split(/[\n,]/)
         let sum = 0;
 
         parts.forEach(part => {
