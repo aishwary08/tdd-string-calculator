@@ -15,5 +15,6 @@ describe('String Calculator', () => {
 
     it('handles multiple numbers', () => {
         expect(calculator.add("1,2,3")).toBe(6);
+        expect(calculator.add("1,2,3,10,20")).toBe(36);
     });
 })

@@ -2,7 +2,13 @@ class Calculator {
 
     add = (numbers) => {
         const parts = numbers.split(',')
-        return parseInt(parts[0] || 0) + parseInt(parts[1] || 0)
+        let sum = 0;
+
+        parts.forEach(part => {
+            sum += parseInt(part || 0)
+        })
+
+        return sum
     }
 }
 
