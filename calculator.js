@@ -1,7 +1,7 @@
 class Calculator {
 
     add(numbers) {
-        return 0
+        return parseInt(numbers || 0) 
     }
 }
 
