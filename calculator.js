@@ -20,7 +20,10 @@ class Calculator {
         let sum = 0;
 
         parts.forEach(part => {
-            sum += parseInt(part || 0)
+            const value = parseInt(part || 0);
+            if (value <= 1000) {
+                sum += value
+            }
         })
 
         return sum
