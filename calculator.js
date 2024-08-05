@@ -6,7 +6,17 @@ class Calculator {
 
         if (numbers.startsWith('//')) {
             const delimiterEndIndex = numbers.indexOf('\n');
-            delimiter = new RegExp(numbers.substring(2, delimiterEndIndex));
+            const delimiterSection = numbers.substring(2, delimiterEndIndex);
+
+            if (delimiterSection.startsWith('[') && delimiterSection.endsWith(']')) {
+                // Multiple delimiters case
+                const delimiterArray = delimiterSection.slice(1, -1).split('][');
+                delimiter = new RegExp('[' + delimiterArray.join('') + ']');
+            } else {
+                // Single delimiter case
+                delimiter = new RegExp(delimiterSection);
+            }
+
             numberString = numbers.substring(delimiterEndIndex + 1);
         }
 
