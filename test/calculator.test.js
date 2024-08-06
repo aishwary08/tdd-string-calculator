@@ -50,4 +50,53 @@ describe('String Calculator', () => {
         expect(calculator.add('//[***][%%%]\n1***2%%%3')).toBe(6);
     });
     
+    describe('extractDelimiter', () => {
+        it('returns default delimiter for simple input', () => {
+            const result = calculator.extractDelimiter('1,2,3');
+            expect(result.delimiter).toEqual(/[\n,]/);
+            expect(result.numberString).toBe('1,2,3');
+        });
+
+        it('extracts single custom delimiter', () => {
+            const result = calculator.extractDelimiter('//;\n1;2;3');
+            expect(result.delimiter).toEqual(/;/);
+            expect(result.numberString).toBe('1;2;3');
+        });
+
+        it('extracts multiple custom delimiters', () => {
+            const result = calculator.extractDelimiter('//[;][*]\n1;2*3');
+            expect(result.delimiter).toEqual(/[;*]/);
+            expect(result.numberString).toBe('1;2*3');
+        });
+    });
+
+    describe('splitNumbers', () => {
+        it('splits numbers using default delimiter', () => {
+            expect(calculator.splitNumbers('1,2\n3', /[\n,]/)).toEqual(['1', '2', '3']);
+        });
+
+        it('splits numbers using custom delimiter', () => {
+            expect(calculator.splitNumbers('1;2;3', /;/)).toEqual(['1', '2', '3']);
+        });
+    });
+
+    describe('checkForNegatives', () => {
+        it('throws error for negative numbers', () => {
+            expect(() => calculator.checkForNegatives(['1', '-2', '3'])).toThrow('negative numbers not allowed: -2');
+        });
+
+        it('does not throw error for positive numbers', () => {
+            expect(() => calculator.checkForNegatives(['1', '2', '3'])).not.toThrow();
+        });
+    });
+
+    describe('calculateSum', () => {
+        it('calculates sum of numbers', () => {
+            expect(calculator.calculateSum(['1', '2', '3'])).toBe(6);
+        });
+
+        it('ignores numbers greater than 1000', () => {
+            expect(calculator.calculateSum(['2', '1001'])).toBe(2);
+        });
+    });
 })
