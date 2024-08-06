@@ -12,9 +12,13 @@ tdd-string-calculator/
 │   └── calculator.test.js
 ├── .gitignore
 ├── calculator.js
+├── jest.config.js
 ├── package-lock.json
 ├── package.json
-└── README.md
+├── README.md
+└── coverage/
+    ├── lcov-report/
+    └── ... (other coverage files)
 ```
 
 ## Setup
@@ -41,6 +45,11 @@ tdd-string-calculator/
 To run the tests, use the following command:
 ```sh
 npm test
+```
+
+To run the tests with coverage, use the following command:
+```sh
+npm run test:coverage
 ```
 
 ## Calculator Class
